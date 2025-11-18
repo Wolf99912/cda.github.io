@@ -1,0 +1,606 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CDA - Contra o Desperdício Alimentar</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js"></script>
+    <link href="style.css" rel="stylesheet">
+</head>
+<body class="scroll-smooth">
+
+    <!-- Navbar -->
+    <nav class="fixed top-0 w-full z-50 bg-gradient-to-r from-green-500 to-green-700 backdrop-blur-sm shadow-lg">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex items-center space-x-2">
+                    <div class="w-10 h-10 bg-gradient-to-br from-yellow-400 to-orange-500 rounded-lg flex items-center justify-center">
+                        <i class="fas fa-leaf text-white text-lg"></i>
+                    </div>
+                    <span class="text-xl font-bold text-white">CDA</span>
+                </div>
+                
+                <div class="hidden md:flex space-x-8">
+                    <a href="#home" class="text-white hover:text-yellow-300 transition-colors font-medium">Home</a>
+                    <a href="#estatisticas" class="text-white hover:text-yellow-300 transition-colors font-medium">Estatísticas</a>
+                    <a href="#causas" class="text-white hover:text-yellow-300 transition-colors font-medium">Causas</a>
+                    <a href="#solucoes" class="text-white hover:text-yellow-300 transition-colors font-medium">Soluções</a>
+                    <a href="#quiz" class="text-white hover:text-yellow-300 transition-colors font-medium">Quiz</a>
+                    <a href="#calculadora" class="text-white hover:text-yellow-300 transition-colors font-medium">Calculadora</a>
+                    <a href="#desafios" class="text-white hover:text-yellow-300 transition-colors font-medium">Desafios</a>
+                    <a href="#jogo" class="text-white hover:text-yellow-300 transition-colors font-medium">Jogo</a>
+                    <a href="#enquete" class="text-white hover:text-yellow-300 transition-colors font-medium">Enquete</a>
+                    <a href="#galeria" class="text-white hover:text-yellow-300 transition-colors font-medium">Galeria</a>
+                    <a href="#sobre" class="text-white hover:text-yellow-300 transition-colors font-medium">Sobre</a>
+                </div>
+                
+                <button class="md:hidden text-white" onclick="toggleMobileMenu()">
+                    <i class="fas fa-bars text-xl"></i>
+                </button>
+            </div>
+        </div>
+        
+        <!-- Mobile Menu -->
+        <div id="mobileMenu" class="hidden md:hidden bg-gradient-to-r from-green-500 to-green-700 border-t">
+            <div class="px-4 py-2 space-y-2">
+                <a href="#home" class="block py-2 text-white hover:text-yellow-300">Home</a>
+                <a href="#estatisticas" class="block py-2 text-white hover:text-yellow-300">Estatísticas</a>
+                <a href="#causas" class="block py-2 text-white hover:text-yellow-300">Causas</a>
+                <a href="#solucoes" class="block py-2 text-white hover:text-yellow-300">Soluções</a>
+                <a href="#quiz" class="block py-2 text-white hover:text-yellow-300">Quiz</a>
+                <a href="#calculadora" class="block py-2 text-white hover:text-yellow-300">Calculadora</a>
+                <a href="#desafios" class="block py-2 text-white hover:text-yellow-300">Desafios</a>
+                <a href="#jogo" class="block py-2 text-white hover:text-yellow-300">Jogo</a>
+                <a href="#enquete" class="block py-2 text-white hover:text-yellow-300">Enquete</a>
+                <a href="#galeria" class="block py-2 text-white hover:text-yellow-300">Galeria</a>
+                <a href="#sobre" class="block py-2 text-white hover:text-yellow-300">Sobre</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="gradient-bg hero-pattern pt-20 pb-16 text-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center animate-fade-in">
+                <div class="mb-8">
+                    <div class="inline-flex items-center space-x-2 bg-white/20 backdrop-blur-sm rounded-full px-4 py-2 mb-6">
+                        <i class="fas fa-seedling text-yellow-300"></i>
+                        <span class="text-sm font-medium text-white">Projeto Multidisciplinar</span>
+                    </div>
+                    <h1 class="text-5xl md:text-6xl font-bold mb-6 leading-tight">
+                        Contra o Desperdício
+                        <span class="block text-yellow-300">Alimentar</span>
+                    </h1>
+                    <p class="text-xl md:text-2xl mb-8 text-white max-w-3xl mx-auto leading-relaxed">
+                        Juntos podemos reduzir o desperdício de alimentos e construir um futuro mais sustentável para todos
+                    </p>
+                </div>
+                
+                <div class="flex flex-col sm:flex-row gap-4 justify-center mb-12">
+                    <button onclick="scrollToSection('quiz')" class="bg-yellow-400 text-green-800 px-8 py-4 rounded-full font-semibold hover:bg-yellow-300 transition-all transform hover:scale-105 shadow-lg">
+                        <i class="fas fa-question-circle mr-2"></i>
+                        Faça o Quiz
+                    </button>
+                    <button onclick="scrollToSection('calculadora')" class="border-2 border-yellow-300 text-yellow-300 px-8 py-4 rounded-full font-semibold hover:bg-yellow-300 hover:text-green-800 transition-all">
+                        <i class="fas fa-calculator mr-2"></i>
+                        Calcule seu Impacto
+                    </button>
+                </div>
+                
+                <div class="relative max-w-4xl mx-auto">
+                    <div class="bg-white/10 backdrop-blur-sm rounded-2xl p-8 shadow-2xl">
+                        <img src="https://i.ibb.co/93tVr3c4/Beige-Illustrative-Food-Preservation-Presentation.jpg" 
+                             alt="Preservação de Alimentos" 
+                             class="w-full rounded-xl shadow-lg"
+                             onerror="this.src=''; this.alt='Imagem não disponível'; this.style.display='none';">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Quiz Interativo -->
+    <section id="quiz" class="py-20 bg-gradient-to-br from-indigo-200 to-indigo-400">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold text-white mb-4">Teste seus Conhecimentos</h2>
+                <div class="section-divider"></div>
+                <p class="text-xl text-white max-w-3xl mx-auto">
+                    Responda ao quiz e descubra o quanto você sabe sobre desperdício alimentar!
+                </p>
+            </div>
+            <div class="bg-gradient-to-br from-indigo-300 to-indigo-500 rounded-2xl p-8 shadow-lg max-w-2xl mx-auto">
+                <div id="quiz-container">
+                    <h3 id="quiz-question" class="text-xl font-semibold text-white mb-4"></h3>
+                    <div id="quiz-options" class="space-y-4"></div>
+                    <button onclick="checkAnswer()" class="mt-6 bg-yellow-400 text-green-800 px-6 py-3 rounded-full font-semibold hover:bg-yellow-300 transition-all">Enviar Resposta</button>
+                    <p id="quiz-feedback" class="mt-4 text-white" aria-live="polite"></p>
+                    <p id="quiz-score" class="mt-4 text-white font-semibold"></p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Calculadora de Desperdício -->
+    <section id="calculadora" class="py-20 bg-gradient-to-br from-green-200 to-green-400">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold text-white mb-4">Calculadora de Desperdício</h2>
+                <div class="section-divider"></div>
+                <p class="text-xl text-white max-w-3xl mx-auto">
+                    Veja o impacto ambiental e financeiro do seu desperdício alimentar
+                </p>
+            </div>
+            <div class="bg-gradient-to-br from-green-300 to-green-500 rounded-2xl p-8 shadow-lg max-w-2xl mx-auto">
+                <div class="space-y-4">
+                    <div>
+                        <label class="block text-white mb-2">Quantas bananas desperdiçadas por semana?</label>
+                        <input type="number" id="bananas" class="w-full p-2 rounded-lg" min="0" value="0">
+                    </div>
+                    <div>
+                        <label class="block text-white mb-2">Quantos kg de arroz desperdiçados por semana?</label>
+                        <input type="number" id="rice" class="w-full p-2 rounded-lg" min="0" value="0" step="0.1">
+                    </div>
+                    <button onclick="calculateWaste()" class="bg-yellow-400 text-green-800 px-6 py-3 rounded-full font-semibold hover:bg-yellow-300 transition-all">Calcular Impacto</button>
+                    <div id="calc-results" class="mt-4 text-white"></div>
+                    <canvas id="wasteChart" class="mt-4"></canvas>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Desafios Semanais (SEM certificado) -->
+    <section id="desafios" class="py-20 bg-gradient-to-br from-orange-200 to-orange-400">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold text-white mb-4">Desafios Semanais</h2>
+                <div class="section-divider"></div>
+                <p class="text-xl text-white max-w-3xl mx-auto">
+                    Participe do desafio "Semana sem Desperdício" e acompanhe seu progresso!
+                </p>
+            </div>
+            <div class="bg-gradient-to-br from-orange-300 to-orange-500 rounded-2xl p-8 shadow-lg max-w-2xl mx-auto">
+                <div class="space-y-6">
+                    <p class="text-white text-lg">Marque os dias em que você conseguiu evitar desperdício:</p>
+                    <div id="challenge-days" class="grid grid-cols-7 gap-4 text-center"></div>
+                    <p id="challenge-streak" class="text-white font-bold text-2xl text-center mt-6"></p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Jogo Simples -->
+    <section id="jogo" class="py-20 bg-gradient-to-br from-purple-200 to-purple-400">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold text-white mb-4">Jogo: Classifique os Alimentos</h2>
+                <div class="section-divider"></div>
+                <p class="text-xl text-white max-w-3xl mx-auto">
+                    Arraste os alimentos para o local correto: Compostar, Reciclar ou Lixo
+                </p>
+            </div>
+            <div class="bg-gradient-to-br from-purple-300 to-purple-500 rounded-2xl p-8 shadow-lg max-w-4xl mx-auto">
+                <div class="flex flex-col md:flex-row gap-8">
+                    <div id="food-items" class="flex flex-wrap gap-4 justify-center">
+                        <div class="draggable bg-yellow-400 text-green-800 p-6 rounded-lg cursor-move shadow-lg" draggable="true" data-type="compost">Casca de Banana</div>
+                        <div class="draggable bg-yellow-400 text-green-800 p-6 rounded-lg cursor-move shadow-lg" draggable="true" data-type="recycle">Embalagem de Papel</div>
+                        <div class="draggable bg-yellow-400 text-green-800 p-6 rounded-lg cursor-move shadow-lg" draggable="true" data-type="trash">Plástico de Iogurte</div>
+                        <div class="draggable bg-yellow-400 text-green-800 p-6 rounded-lg cursor-move shadow-lg" draggable="true" data-type="compost">Restos de Vegetais</div>
+                        <div class="draggable bg-yellow-400 text-green-800 p-6 rounded-lg cursor-move shadow-lg" draggable="true" data-type="recycle">Garrafa de Vidro</div>
+                        <div class="draggable bg-yellow-400 text-green-800 p-6 rounded-lg cursor-move shadow-lg" draggable="true" data-type="trash">Guardanapo Usado</div>
+                    </div>
+                    <div class="flex-1 space-y-6">
+                        <div class="dropzone bg-green-600 p-12 rounded-xl text-center text-white text-3xl font-bold shadow-lg" data-target="compost">Compostar</div>
+                        <div class="dropzone bg-blue-600 p-12 rounded-xl text-center text-white text-3xl font-bold shadow-lg" data-target="recycle">Reciclar</div>
+                        <div class="dropzone bg-red-600 p-12 rounded-xl text-center text-white text-3xl font-bold shadow-lg" data-target="trash">Lixo</div>
+                    </div>
+                </div>
+                <p id="game-score" class="mt-8 text-white font-bold text-3xl text-center">Pontuação: 0</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Enquete -->
+    <section id="enquete" class="py-20 bg-gradient-to-br from-teal-200 to-teal-400">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold text-white mb-4">Enquete: Seu Desperdício</h2>
+                <div class="section-divider"></div>
+                <p class="text-xl text-white max-w-3xl mx-auto">
+                    Qual alimento você mais desperdiça? Vote e veja os resultados!
+                </p>
+            </div>
+            <div class="bg-gradient-to-br from-teal-300 to-teal-500 rounded-2xl p-8 shadow-lg max-w-2xl mx-auto">
+                <div class="space-y-6">
+                    <div class="grid grid-cols-2 gap-4">
+                        <button onclick="vote('Frutas')" class="bg-yellow-400 text-green-800 px-6 py-5 rounded-xl hover:bg-yellow-300 text-xl font-bold transition-all">Frutas</button>
+                        <button onclick="vote('Vegetais')" class="bg-yellow-400 text-green-800 px-6 py-5 rounded-xl hover:bg-yellow-300 text-xl font-bold transition-all">Vegetais</button>
+                        <button onclick="vote('Pães')" class="bg-yellow-400 text-green-800 px-6 py-5 rounded-xl hover:bg-yellow-300 text-xl font-bold transition-all">Pães</button>
+                        <button onclick="vote('Outros')" class="bg-yellow-400 text-green-800 px-6 py-5 rounded-xl hover:bg-yellow-300 text-xl font-bold transition-all">Outros</button>
+                    </div>
+                    <canvas id="pollChart" class="mt-8"></canvas>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Estatísticas -->
+    <section id="estatisticas" class="py-20 bg-gradient-to-br from-blue-200 to-blue-400">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold text-white mb-4">Estatísticas Alarmantes</h2>
+                <div class="section-divider"></div>
+                <p class="text-xl text-white max-w-3xl mx-auto">
+                    Os números do desperdício alimentar revelam a urgência de agirmos agora
+                </p>
+            </div>
+            
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="card-hover bg-gradient-to-br from-red-400 to-red-600 p-8 rounded-2xl text-center border border-red-300">
+                    <div class="w-16 h-16 bg-red-700 rounded-full flex items-center justify-center mx-auto mb-6">
+                        <i class="fas fa-globe text-white text-2xl"></i>
+                    </div>
+                    <div class="stats-counter text-yellow-300">1/3</div>
+                    <h3 class="text-xl font-semibold text-white mb-3">dos Alimentos Globais</h3>
+                    <p class="text-white">São desperdiçados anualmente em todo o mundo</p>
+                </div>
+                
+                <div class="card-hover bg-gradient-to-br from-orange-400 to-orange-600 p-8 rounded-2xl text-center border border-orange-300">
+                    <div class="w-16 h-16 bg-orange-700 rounded-full flex items-center justify-center mx-auto mb-6">
+                        <i class="fas fa-weight-hanging text-white text-2xl"></i>
+                    </div>
+                    <div class="stats-counter text-yellow-300">26M</div>
+                    <h3 class="text-xl font-semibold text-white mb-3">Toneladas no Brasil</h3>
+                    <p class="text-white">Quantidade de alimentos desperdiçados anualmente no Brasil</p>
+                </div>
+                
+                <div class="card-hover bg-gradient-to-br from-green-400 to-green-600 p-8 rounded-2xl text-center border border-green-300">
+                    <div class="w-16 h-16 bg-green-700 rounded-full flex items-center justify-center mx-auto mb-6">
+                        <i class="fas fa-leaf text-white text-2xl"></i>
+                    </div>
+                    <div class="stats-counter text-yellow-300">8-10%</div>
+                    <h3 class="text-xl font-semibold text-white mb-3">das Emissões de CO₂</h3>
+                    <p class="text-white">Impacto ambiental do desperdício alimentar nas emissões globais</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Causas e Consequências -->
+    <section id="causas" class="py-20 bg-gradient-to-br from-purple-200 to-purple-400">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold text-white mb-4">Causas e Consequências</h2>
+                <div class="section-divider"></div>
+                <p class="text-xl text-white max-w-3xl mx-auto">
+                    Entenda os fatores que levam ao desperdício e seus impactos
+                </p>
+            </div>
+            
+            <div class="grid lg:grid-cols-2 gap-12">
+                <div class="bg-gradient-to-br from-red-300 to-red-500 rounded-2xl p-8 shadow-lg">
+                    <div class="flex items-center mb-6">
+                        <div class="w-12 h-12 bg-red-700 rounded-lg flex items-center justify-center mr-4">
+                            <i class="fas fa-exclamation-triangle text-white"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold text-white">Principais Causas</h3>
+                    </div>
+                    <div class="space-y-4">
+                        <div class="flex items-start space-x-3"><div class="w-2 h-2 bg-yellow-400 rounded-full mt-2"></div><p class="text-white">Falta de planejamento na compra de alimentos</p></div>
+                        <div class="flex items-start space-x-3"><div class="w-2 h-2 bg-yellow-400 rounded-full mt-2"></div><p class="text-white">Armazenamento inadequado dos produtos</p></div>
+                        <div class="flex items-start space-x-3"><div class="w-2 h-2 bg-yellow-400 rounded-full mt-2"></div><p class="text-white">Padrões estéticos rigorosos do mercado</p></div>
+                        <div class="flex items-start space-x-3"><div class="w-2 h-2 bg-yellow-400 rounded-full mt-2"></div><p class="text-white">Falta de educação sobre aproveitamento integral</p></div>
+                    </div>
+                </div>
+                
+                <div class="bg-gradient-to-br from-orange-300 to-orange-500 rounded-2xl p-8 shadow-lg">
+                    <div class="flex items-center mb-6">
+                        <div class="w-12 h-12 bg-orange-700 rounded-lg flex items-center justify-center mr-4">
+                            <i class="fas fa-chart-line text-white"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold text-white">Consequências</h3>
+                    </div>
+                    <div class="space-y-4">
+                        <div class="flex items-start space-x-3"><div class="w-2 h-2 bg-yellow-400 rounded-full mt-2"></div><p class="text-white">Aumento da fome e insegurança alimentar</p></div>
+                        <div class="flex items-start space-x-3"><div class="w-2 h-2 bg-yellow-400 rounded-full mt-2"></div><p class="text-white">Impactos ambientais significativos</p></div>
+                        <div class="flex items-start space-x-3"><div class="w-2 h-2 bg-yellow-400 rounded-full mt-2"></div><p class="text-white">Perdas econômicas para produtores e consumidores</p></div>
+                        <div class="flex items-start space-x-3"><div class="w-2 h-2 bg-yellow-400 rounded-full mt-2"></div><p class="text-white">Desperdício de recursos naturais</p></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Soluções -->
+    <section id="solucoes" class="py-20 bg-gradient-to-br from-green-200 to-green-400">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold text-white mb-4">Soluções Práticas</h2>
+                <div class="section-divider"></div>
+                <p class="text-xl text-white max-w-3xl mx-auto">
+                    Ações simples que você pode implementar hoje
+                </p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <div class="card-hover bg-gradient-to-br from-blue-400 to-blue-600 p-6 rounded-xl text-center border border-blue-300">
+                    <div class="w-16 h-16 bg-blue-700 rounded-full flex items-center justify-center mx-auto mb-4"><i class="fas fa-list-check text-white text-xl"></i></div>
+                    <h4 class="font-semibold text-white mb-2">Planejamento</h4>
+                    <p class="text-sm text-white">Faça listas de compras e planeje suas refeições</p>
+                </div>
+                <div class="card-hover bg-gradient-to-br from-purple-400 to-purple-600 p-6 rounded-xl text-center border border-purple-300">
+                    <div class="w-16 h-16 bg-purple-700 rounded-full flex items-center justify-center mx-auto mb-4"><i class="fas fa-box text-white text-xl"></i></div>
+                    <h4 class="font-semibold text-white mb-2">Armazenamento</h4>
+                    <p class="text-sm text-white">Aprenda técnicas corretas de conservação</p>
+                </div>
+                <div class="card-hover bg-gradient-to-br from-green-400 to-green-600 p-6 rounded-xl text-center border border-green-300">
+                    <div class="w-16 h-16 bg-green-700 rounded-full flex items-center justify-center mx-auto mb-4"><i class="fas fa-recycle text-white text-xl"></i></div>
+                    <h4 class="font-semibold text-white mb-2">Reaproveitamento</h4>
+                    <p class="text-sm text-white">Use cascas, talos e sobras em novas receitas</p>
+                </div>
+                <div class="card-hover bg-gradient-to-br from-yellow-400 to-yellow-600 p-6 rounded-xl text-center border border-yellow-300">
+                    <div class="w-16 h-16 bg-yellow-700 rounded-full flex items-center justify-center mx-auto mb-4"><i class="fas fa-share-alt text-white text-xl"></i></div>
+                    <h4 class="font-semibold text-white mb-2">Compartilhamento</h4>
+                    <p class="text-sm text-white">Doe excedentes para quem precisa</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Galeria -->
+    <section id="galeria" class="py-20 bg-gradient-to-br from-teal-200 to-teal-400">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold text-white mb-4">Galeria de Cartazes</h2>
+                <div class="section-divider"></div>
+                <p class="text-xl text-white max-w-3xl mx-auto">
+                    Material educativo para conscientização sobre o desperdício alimentar
+                </p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="bg-gradient-to-br from-green-300 to-green-500 rounded-xl overflow-hidden shadow-lg card-hover cursor-pointer" onclick="showImage('https://i.ibb.co/Lhp9tC69/1.jpg', 'Cartaz 1: Impacto Ambiental')">
+                    <div class="h-64 overflow-hidden"><img src="https://i.ibb.co/Lhp9tC69/1.jpg" alt="Cartaz 1" class="w-full h-full object-cover hover:scale-105 transition-transform duration-300"></div>
+                    <div class="p-6"><h4 class="font-semibold text-white mb-2">Impacto Ambiental</h4><p class="text-white text-sm">Conheça os efeitos do desperdício no meio ambiente</p></div>
+                </div>
+                <div class="bg-gradient-to-br from-blue-300 to-blue-500 rounded-xl overflow-hidden shadow-lg card-hover cursor-pointer" onclick="showImage('https://i.ibb.co/XxdjHszY/2.jpg', 'Cartaz 2: Dicas Domésticas')">
+                    <div class="h-64 overflow-hidden"><img src="https://i.ibb.co/XxdjHszY/2.jpg" alt="Cartaz 2" class="w-full h-full object-cover hover:scale-105 transition-transform duration-300"></div>
+                    <div class="p-6"><h4 class="font-semibold text-white mb-2">Dicas Domésticas</h4><p class="text-white text-sm">Práticas simples para reduzir o desperdício em casa</p></div>
+                </div>
+                <div class="bg-gradient-to-br from-purple-300 to-purple-500 rounded-xl overflow-hidden shadow-lg card-hover cursor-pointer" onclick="showImage('https://i.ibb.co/Gv0hf0rV/3.jpg', 'Cartaz 3: Estatísticas')">
+                    <div class="h-64 overflow-hidden"><img src="https://i.ibb.co/Gv0hf0rV/3.jpg" alt="Cartaz 3" class="w-full h-full object-cover hover:scale-105 transition-transform duration-300"></div>
+                    <div class="p-6"><h4 class="font-semibold text-white mb-2">Estatísticas</h4><p class="text-white text-sm">Dados importantes sobre o desperdício alimentar</p></div>
+                </div>
+                <div class="bg-gradient-to-br from-yellow-300 to-yellow-500 rounded-xl overflow-hidden shadow-lg card-hover cursor-pointer" onclick="showImage('https://i.ibb.co/SXVS3qyz/4.jpg', 'Cartaz 4: Soluções Globais')">
+                    <div class="h-64 overflow-hidden"><img src="https://i.ibb.co/SXVS3qyz/4.jpg" alt="Cartaz 4" class="w-full h-full object-cover hover:scale-105 transition-transform duration-300"></div>
+                    <div class="p-6"><h4 class="font-semibold text-white mb-2">Soluções Globais</h4><p class="text-white text-sm">Iniciativas mundiais contra o desperdício</p></div>
+                </div>
+                <div class="bg-gradient-to-br from-red-300 to-red-500 rounded-xl overflow-hidden shadow-lg card-hover cursor-pointer" onclick="showImage('https://i.ibb.co/5W5cHQFt/5.jpg', 'Cartaz 5: Chamada para Ação')">
+                    <div class="h-64 overflow-hidden"><img src="https://i.ibb.co/5W5cHQFt/5.jpg" alt="Cartaz 5" class="w-full h-full object-cover hover:scale-105 transition-transform duration-300"></div>
+                    <div class="p-6"><h4 class="font-semibold text-white mb-2">Chamada para Ação</h4><p class="text-white text-sm">Mobilização para mudanças efetivas</p></div>
+                </div>
+            </div>
+        </div>
+
+        <div id="imageModal" class="fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center z-50 hidden">
+            <div class="max-w-4xl max-h-screen p-4 relative">
+                <button onclick="closeModal()" class="absolute top-2 right-2 text-white hover:text-yellow-300 text-3xl z-10 bg-black bg-opacity-50 rounded-full w-12 h-12 flex items-center justify-center">
+                    <i class="fas fa-times"></i>
+                </button>
+                <div class="bg-gradient-to-br from-teal-300 to-teal-500 rounded-lg overflow-hidden">
+                    <div class="p-4 border-b border-teal-400">
+                        <h3 id="modal-title" class="text-xl font-semibold text-white"></h3>
+                    </div>
+                    <div class="p-4">
+                        <img id="modal-img" src="" alt="" class="w-full h-auto max-h-96 object-contain">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sobre -->
+    <section id="sobre" class="py-20 bg-gradient-to-br from-yellow-200 to-yellow-400">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold text-white mb-4">Sobre o Projeto</h2>
+                <div class="section-divider"></div>
+            </div>
+            
+            <div class="max-w-4xl mx-auto">
+                <div class="bg-gradient-to-br from-green-300 to-green-500 rounded-2xl p-8 lg:p-12 border border-green-400">
+                    <div class="text-center mb-8">
+                        <div class="w-20 h-20 bg-green-700 rounded-full flex items-center justify-center mx-auto mb-6">
+                            <i class="fas fa-users text-white text-2xl"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold text-white mb-4">Projeto Multidisciplinar</h3>
+                        <p class="text-lg text-white leading-relaxed">
+                            O CDA é uma iniciativa que une diferentes áreas do conhecimento para combater o desperdício alimentar. 
+                            Através da educação, conscientização e ação prática, buscamos criar um impacto positivo na sociedade 
+                            e no meio ambiente.
+                        </p>
+                    </div>
+                    
+                    <div class="grid md:grid-cols-3 gap-6 text-center">
+                        <div class="bg-gradient-to-br from-blue-300 to-blue-500 rounded-lg p-6 shadow-sm">
+                            <i class="fas fa-graduation-cap text-white text-2xl mb-3"></i>
+                            <h4 class="font-semibold text-white mb-2">Educação</h4>
+                            <p class="text-sm text-white">Conscientização através do conhecimento</p>
+                        </div>
+                        <div class="bg-gradient-to-br from-purple-300 to-purple-500 rounded-lg p-6 shadow-sm">
+                            <i class="fas fa-hands-helping text-white text-2xl mb-3"></i>
+                            <h4 class="font-semibold text-white mb-2">Ação</h4>
+                            <p class="text-sm text-white">Soluções práticas e aplicáveis</p>
+                        </div>
+                        <div class="bg-gradient-to-br from-red-300 to-red-500 rounded-lg p-6 shadow-sm">
+                            <i class="fas fa-heart text-white text-2xl mb-3"></i>
+                            <h4 class="font-semibold text-white mb-2">Impacto</h4>
+                            <p class="text-sm text-white">Transformação social e ambiental</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="gradient-bg text-white py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center">
+                <div class="flex items-center justify-center space-x-2 mb-6">
+                    <div class="w-12 h-12 bg-yellow-400 rounded-lg flex items-center justify-center">
+                        <i class="fas fa-leaf text-white text-xl"></i>
+                    </div>
+                    <span class="text-2xl font-bold text-white">CDA</span>
+                </div>
+                <p class="text-yellow-300 mb-6 max-w-2xl mx-auto">
+                    Juntos contra o desperdício alimentar. Cada ação conta para um futuro mais sustentável.
+                </p>
+                <p class="text-yellow-300 text-sm">
+                    © 2024 CDA - Contra o Desperdício Alimentar. Todos os direitos reservados.
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile Menu
+        function toggleMobileMenu() {
+            document.getElementById('mobileMenu').classList.toggle('hidden');
+        }
+
+        function scrollToSection(id) {
+            document.getElementById(id).scrollIntoView({ behavior: 'smooth' });
+        }
+
+        // Modal de imagem
+        function showImage(src, title) {
+            document.getElementById('modal-img').src = src;
+            document.getElementById('modal-title').textContent = title;
+            document.getElementById('imageModal').classList.remove('hidden');
+            document.body.style.overflow = 'hidden';
+        }
+        function closeModal() {
+            document.getElementById('imageModal').classList.add('hidden');
+            document.body.style.overflow = 'auto';
+        }
+
+        // Quiz
+        const quizQuestions = [
+            { question: "Qual é a porcentagem de alimentos desperdiçados globalmente?", options: ["10%", "20%", "33%", "50%"], correct: 2 },
+            { question: "Quantas toneladas de alimentos são desperdiçadas anualmente no Brasil?", options: ["10M", "26M", "50M", "100M"], correct: 1 },
+            { question: "Qual é uma causa comum de desperdício alimentar?", options: ["Planejamento excessivo", "Armazenamento inadequado", "Consum1 excessivo", "Doação de alimentos"], correct: 1 }
+        ];
+        let currentQuestion = 0, quizScore = 0;
+
+        function loadQuiz() {
+            if (currentQuestion >= quizQuestions.length) {
+                document.getElementById('quiz-container').innerHTML = `<h3 class="text-2xl font-bold text-white">Quiz concluído!</h3><p class="text-xl text-white mt-4">Pontuação: ${quizScore}/${quizQuestions.length}</p><button onclick="resetQuiz()" class="mt-6 bg-yellow-400 text-green-800 px-8 py-3 rounded-full font-bold">Jogar Novamente</button>`;
+                return;
+            }
+            const q = quizQuestions[currentQuestion];
+            document.getElementById('quiz-question').textContent = q.question;
+            document.getElementById('quiz-options').innerHTML = q.options.map((opt, i) => `<button onclick="checkAnswer(${i})" class="w-full bg-white text-green-800 px-4 py-3 rounded-lg hover:bg-yellow-300 my-2">${opt}</button>`).join('');
+            document.getElementById('quiz-feedback').textContent = '';
+            document.getElementById('quiz-score').textContent = `Pontuação: ${quizScore}/${quizQuestions.length}`;
+        }
+
+        function checkAnswer(idx) {
+            const q = quizQuestions[currentQuestion];
+            if (idx === q.correct) { quizScore++; document.getElementById('quiz-feedback').textContent = "Correto!"; document.getElementById('quiz-feedback').style.color = "#dcfce7"; }
+            else { document.getElementById('quiz-feedback').textContent = "Errado! Resposta: " + q.options[q.correct]; document.getElementById('quiz-feedback').style.color = "#fecaca"; }
+            currentQuestion++;
+            setTimeout(loadQuiz, 1500);
+        }
+
+        function resetQuiz() { currentQuestion = 0; quizScore = 0; loadQuiz(); }
+
+        // Calculadora
+        let wasteChart = null;
+        function calculateWaste() {
+            const bananas = parseInt(document.getElementById('bananas').value) || 0;
+            const rice = parseFloat(document.getElementById('rice').value) || 0;
+            const totalCost = (bananas * 0.5 + rice * 10).toFixed(2);
+            const co2 = (bananas * 0.2 + rice * 1.5).toFixed(2);
+            document.getElementById('calc-results').innerHTML = `<p class="text-xl">Custo perdido: R$${totalCost}</p><p class="text-xl">CO₂ emitido: ${co2} kg</p>`;
+
+            if (wasteChart) wasteChart.destroy();
+            wasteChart = new Chart(document.getElementById('wasteChart'), {
+                type: 'bar', data: { labels: ['Bananas', 'Arroz'], datasets: [{ label: 'Desperdício', data: [bananas, rice], backgroundColor: ['#facc15', '#16a34a'] }] },
+                options: { scales: { y: { beginAtZero: true } } }
+            });
+        }
+
+        // Desafios Semanais
+        function loadChallenge() {
+            const days = ['Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sáb', 'Dom'];
+            const container = document.getElementById('challenge-days');
+            const streakEl = document.getElementById('challenge-streak');
+            let progress = JSON.parse(localStorage.getItem('challengeProgress')) || Array(7).fill(false);
+            const completed = progress.filter(Boolean).length;
+
+            container.innerHTML = days.map((d, i) => `
+                <div class="text-center">
+                    <input type="checkbox" id="day${i}" ${progress[i] ? 'checked' : ''} onchange="updateChallenge(${i})" class="w-10 h-10 text-green-600 rounded cursor-pointer">
+                    <label for="day${i}" class="block mt-2 text-white font-bold text-lg cursor-pointer">${d}</label>
+                </div>
+            `).join('');
+
+            streakEl.textContent = completed === 7 ? "Parabéns! Você completou a semana inteira! 🎉" : `Dias completos: ${completed}/7`;
+        }
+
+        function updateChallenge(i) {
+            let p = JSON.parse(localStorage.getItem('challengeProgress')) || Array(7).fill(false);
+            p[i] = !p[i];
+            localStorage.setItem('challengeProgress', JSON.stringify(p));
+            loadChallenge();
+        }
+
+        // Jogo
+        let gameScore = 0;
+        function initGame() {
+            document.querySelectorAll('.draggable').forEach(d => {
+                d.addEventListener('dragstart', e => { e.dataTransfer.setData('type', d.dataset.type); d.style.opacity = '0.5'; });
+                d.addEventListener('dragend', () => d.style.opacity = '1');
+            });
+            document.querySelectorAll('.dropzone').forEach(z => {
+                z.addEventListener('dragover', e => e.preventDefault());
+                z.addEventListener('drop', e => {
+                    e.preventDefault();
+                    const type = e.dataTransfer.getData('type');
+                    if (type === z.dataset.target) {
+                        gameScore++;
+                        document.getElementById('game-score').textContent = `Pontuação: ${gameScore}`;
+                        const item = document.querySelector(`[data-type="${type}"]:not(.dropped)`);
+                        if (item) { z.appendChild(item); item.classList.add('dropped'); }
+                    }
+                });
+            });
+        }
+
+        // Enquete
+        let pollData = JSON.parse(localStorage.getItem('pollData')) || {Frutas:0, Vegetais:0, Pães:0, Outros:0};
+        let pollChart = null;
+        function vote(opt) { pollData[opt]++; localStorage.setItem('pollData', JSON.stringify(pollData)); loadPoll(); }
+        function loadPoll() {
+            const ctx = document.getElementById('pollChart').getContext('2d');
+            if (pollChart) pollChart.destroy();
+            pollChart = new Chart(ctx, {
+                type: 'pie',
+                data: { labels: Object.keys(pollData), datasets: [{ data: Object.values(pollData), backgroundColor: ['#facc15','#84cc16','#3b82f6','#ef4444'] }] },
+                options: { plugins: { legend: { position: 'bottom' } } }
+            });
+        }
+
+        // Inicialização
+        window.addEventListener('load', () => {
+            loadQuiz();
+            loadChallenge();
+            initGame();
+            loadPoll();
+        });
+    </script>
+</body>
+</html>
